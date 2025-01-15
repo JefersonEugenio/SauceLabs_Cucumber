@@ -20,22 +20,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Google Chrome install
-      run: |
-          chmod +x ./InstallChrome.sh
-          ./InstallChrome.sh
-
-    - name: Maven Clean
-      run: mvn clean
-
-    - name: Maven Dependency Tree
-      run: mvn dependency:tree
-
-    - name: Maven Install
-      run: mvn install -DskipTests=true
-
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: Run Tests
-      run: mvn test -X -Dheadless=true -Dtest=SauceLabsRunTest || { echo 'Testes falharam'; exit 1; }
