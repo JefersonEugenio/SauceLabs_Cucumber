@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  REPORT_PATH: ./reports
-  OTHER_CONFIG: value
-
 jobs:
   build:
 
@@ -23,6 +19,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
+    - name: Google Chrome install
+      run: |
+          chmod +x ./InstallChrome.sh
+          ./InstallChrome.sh
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
