@@ -18,7 +18,7 @@ public class BaseTest extends DriverFactory {
         Report.configurarExtentReport();
         Report.createTest("Sauce Labs com cucumber");
         extentTest.log(Status.INFO, "Iniciado de teste");
-        DriverManager.setDriver(getBrower(Drivers.CHROME));
+        DriverManager.setDriver(createInstance(Drivers.CHROME));
         DriverManager.getDriver().get(FileOperationsAndProperties.getPropertiesData("url", "SauceLabs"));
         if (DriverManager.getDriver() == null) {
             throw new IllegalStateException("Driver não foi inicializado corretamente!");
